@@ -56,7 +56,7 @@ const MovieCard = () => {
         <>
             {
                 [movie, TV].map(category => category.results?.map(element => (
-                    <div onMouseEnter={() => handleEnter(element.id)} onMouseLeave={handleLeave} className='w-[25%] h-80 p-2' key={element.id}>
+                    <div onMouseEnter={() => handleEnter(element.id)} onMouseLeave={handleLeave} className='w-[50%] md:w-[33%] lg:w-[25%] xl:w-[20%] h-80 p-2' key={element.id}>
                         <div className="w-full h-full rounded-md overflow-hidden text-[.9rem]">
 
                             {hoverId !== element.id ? <img className='w-full h-full object-cover object-center ' src={`https://image.tmdb.org/t/p/w185/${element.backdrop_path}`} alt="" /> :
