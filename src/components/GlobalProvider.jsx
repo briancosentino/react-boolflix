@@ -1,16 +1,29 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 const GlobalContext = createContext();
 // Definiamo un custom Provider
 function GlobalProvider({ children }) {
     // Aggiungiamo le varibili di
     // stato che vogliamo condividere
-    const [query, setQuery] = useState('ritorno+al+futuro')
+    const [query, setQuery] = useState('mat')
     const url = `https://api.themoviedb.org/3/search/movie?api_key=bab981cd0dbb4aff853b810411daadd1&query=${query}`
+    const [movie, setMovie] = useState('')
+
+    function fetchMovie() {
+        fetch(url)
+            .then(res => res.json())
+            .then(data => { setMovie(data) })
+            .catch(err => console.error(err))
+    }
+    console.log(movie);
+
+    useEffect(() => {
+        fetchMovie()
+    }, [query])
 
     return (
         <GlobalContext.Provider
             value={{
-                url,
+                movie,
                 query,
                 setQuery,
             }}
