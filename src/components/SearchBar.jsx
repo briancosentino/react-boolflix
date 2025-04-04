@@ -31,7 +31,7 @@ const SearchBar = () => {
 
                 <input className=' py-0.5 pl-3 pr-9 rounded-lg bg-stone-600 placeholder:text-stone-400 focus:outline-none focus:bg-stone-600 focus:text-stone-400 placeholder:text-[.9rem] ' value={searched} onChange={handleChange} type="search" name="searchBar" id="searchBar" placeholder='Cerca serie, film...' />
             </form> :
-                <div className='text-stone-400' onClick={handleActive}><i className='fa-solid fa-magnifying-glass'></i></div>
+                <div className='cursor-pointer text-stone-400' onClick={handleActive}><i className='fa-solid fa-magnifying-glass'></i></div>
             }
         </div>
     )

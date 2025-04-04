@@ -11,7 +11,6 @@ function GlobalProvider({ children }) {
     const [movie, setMovie] = useState('')
     const [TV, setTV] = useState('mat')
 
-
     function fetchMovie() {
         fetch(urlMovie)
             .then(res => res.json())
@@ -22,7 +21,11 @@ function GlobalProvider({ children }) {
     function fetchTv() {
         fetch(urlTV)
             .then(res => res.json())
-            .then(data => { setTV(data) })
+            .then(data => {
+                setTV(data)
+
+
+            })
             .catch(err => console.error(err))
 
     }
@@ -41,6 +44,7 @@ function GlobalProvider({ children }) {
                 TV,
                 query,
                 setQuery,
+
             }}
         >
             {children}
