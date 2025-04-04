@@ -22,15 +22,35 @@ const MovieCard = () => {
     }
     console.log(findCountry('en'));
 
+    function generateStars(element) {
+        const numberOfStars = []
+
+        for (let i = 0; i < Math.ceil(element.vote_average / 2); i++) {
+            numberOfStars.push(i)
+
+        }
+        return numberOfStars
+    }
+
+
     return (
         <div>
             {
                 [movie, TV].map(category => category.results?.map(element => (
                     <ul key={element.id}>
+                        <img src={`https://image.tmdb.org/t/p/w185/${element.backdrop_path}`} alt="" />
                         <li>{element.title ? element.title : element.name}</li>
                         <li>{element.original_title ? element.original_title : element.original_name}</li>
                         <li>{findCountry(element.original_language) ? <img src={findCountry(element.original_language)?.img} alt={element.title} /> : element.original_language}</li>
-                        <li>{element.vote_average}</li>
+                        <li className='relative flex gap-1.5'>
+                            <i className='fa-regular fa-star'></i>
+                            <i className='fa-regular fa-star'></i>
+                            <i className='fa-regular fa-star'></i>
+                            <i className='fa-regular fa-star'></i>
+                            <i className='fa-regular fa-star'></i>
+                            <div className='absolute top-0 left-0 w-full flex gap-1.5 '>{generateStars(element).map((star, idx) => (<i key={`${element.id}-${idx}`} className=' fa-solid  fa-star  text-amber-300'></i>))} </div>
+                        </li>
+                        {/* {Math.ceil(element.vote_average / 2)} */}
                     </ul>
                 )))
 
