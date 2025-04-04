@@ -2,8 +2,9 @@ import React from 'react'
 import { GlobalProvider, useGlobal } from './GlobalProvider'
 
 const MovieCard = () => {
-    const { movie } = useGlobal()
+    const { movie, TV } = useGlobal()
     console.log(movie);
+    console.log(TV);
 
     const languages = [
         { language: "it", img: "https://flagcdn.com/w40/it.png" }, // Italiano 🇮🇹
@@ -24,14 +25,15 @@ const MovieCard = () => {
     return (
         <div>
             {
-                movie.results?.map(movie => (
-                    <ul key={movie.id}>
-                        <li>{movie.title}</li>
-                        <li>{movie.original_title}</li>
-                        <li>{findCountry(movie.original_language) ? <img src={findCountry(movie.original_language)?.img} alt={movie.title} /> : movie.original_language}</li>
-                        <li>{movie.vote_average}</li>
+                [movie, TV].map(category => category.results?.map(element => (
+                    <ul key={element.id}>
+                        <li>{element.title ? element.title : element.name}</li>
+                        <li>{element.original_title ? element.original_title : element.original_name}</li>
+                        <li>{findCountry(element.original_language) ? <img src={findCountry(element.original_language)?.img} alt={element.title} /> : element.original_language}</li>
+                        <li>{element.vote_average}</li>
                     </ul>
-                ))
+                )))
+
             }
         </div>
     )

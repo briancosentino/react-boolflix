@@ -2,21 +2,22 @@ import React, { useState } from 'react'
 import { useGlobal } from './GlobalProvider'
 
 const SearchBar = () => {
-    const { movie, query, setQuery } = useGlobal()
+    const { query, setQuery } = useGlobal()
     console.log(query);
 
 
-    const [searchedMovie, setSearchedMovie] = useState('')
+    const [searched, setSearched] = useState('')
 
     const handleChange = (e) => {
-        setSearchedMovie(e.target.value)
+        setSearched(e.target.value)
 
     }
-    console.log(searchedMovie);
+    console.log(searched);
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setQuery(searchedMovie)
+        setQuery(searched)
+        setSearched('')
 
 
     }
@@ -25,7 +26,7 @@ const SearchBar = () => {
         <div>
             <form onSubmit={handleSubmit} >
 
-                <input value={searchedMovie} onChange={handleChange} type="search" name="searchBar" id="searchBar" placeholder='Search...' />
+                <input value={searched} onChange={handleChange} type="search" name="searchBar" id="searchBar" placeholder='Search...' />
                 <button type="submit">Cerca</button>
             </form>
 
