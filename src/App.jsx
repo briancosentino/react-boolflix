@@ -16,18 +16,16 @@ function App() {
 
   return (
     <>
-
       <Header />
-
-
-      <MovieList />
-
-
-      {query && query.length < 0 ? <PopularList /> : ''}
-      {query && query.length < 0 ? <TrendingList /> : ''}
-      {query && query.length < 0 ? <TopRatedList /> : ''}
-
-
+      {query ? (
+        <MovieList />
+      ) : (
+        <>
+          <PopularList />
+          <TrendingList />
+          <TopRatedList />
+        </>
+      )}
     </>
   )
 }
