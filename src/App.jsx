@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar'
 import MovieCard from './components/MovieCard'
 import Header from './components/Header'
 import FlexWrapper from './components/FlexWrapper'
+import PopularList from './components/PopularList'
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
 
           <MovieCard />
         </FlexWrapper>
+        <PopularList />
 
       </GlobalProvider>
     </>
