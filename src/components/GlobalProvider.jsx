@@ -11,12 +11,14 @@ function GlobalProvider({ children }) {
     const urlPopulars = `https://api.themoviedb.org/3/movie/popular?api_key=bab981cd0dbb4aff853b810411daadd1&language=it-IT&page=1`
     const urlTrending = `https://api.themoviedb.org/3/trending/movie/week?api_key=bab981cd0dbb4aff853b810411daadd1&language=it-IT&page=1`
     const urlTopRated = `https://api.themoviedb.org/3/movie/top_rated?api_key=bab981cd0dbb4aff853b810411daadd1&page=1`
+    const urlGenres = `https://api.themoviedb.org/3/genre/movie/list?api_key=bab981cd0dbb4aff853b810411daadd1&language=it-IT`
 
     const [movie, setMovie] = useState('')
     const [TV, setTV] = useState('mat')
     const [populars, setPopulars] = useState('')
     const [trending, setTrending] = useState('')
     const [topRated, setTopRated] = useState('')
+    const [genres, setGenres] = useState('')
 
     function fetchMovie() {
         fetch(urlMovie)
@@ -77,6 +79,20 @@ function GlobalProvider({ children }) {
     }
     console.log(topRated);
 
+    function fetchGenre() {
+        fetch(urlGenres)
+            .then(res => res.json())
+            .then(data => {
+
+
+                setGenres(data)
+
+
+            })
+            .catch(err => console.error(err))
+
+    }
+
 
 
 
@@ -87,6 +103,7 @@ function GlobalProvider({ children }) {
         fetchPopulars()
         fetchTrending()
         fetchTopRated()
+        fetchGenre()
     }, [query])
 
     return (
@@ -102,6 +119,8 @@ function GlobalProvider({ children }) {
                 setTrending,
                 setTopRated,
                 topRated,
+                genres,
+
 
             }}
         >

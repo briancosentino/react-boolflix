@@ -58,7 +58,7 @@ const MovieCard = ({ id, path, original_language, original_name, name, title, or
             <div onMouseEnter={() => handleEnter(id)} onMouseLeave={handleLeave} className={`cursor-pointer ${carousel ? 'w-full' : 'w-[50%] md:w-[33%] lg:w-[25%] xl:w-[20%]'}  h-80 p-2`}>
                 <div className="w-full h-full rounded-md overflow-hidden text-[.9rem]">
 
-                    {hoverId !== id ? <img className='w-full h-full object-cover object-center ' src={`https://image.tmdb.org/t/p/w185/${path}`} alt={title} /> :
+                    {hoverId !== id ? <img className='w-full h-full object-cover object-center ' src={`https://image.tmdb.org/t/p/w1920/${path}`} alt={title} /> :
                         <div className='w-full h-full mt-4 text-stone-400 flex flex-col gap-2'>
 
                             <p><span className='font-semibold'>Titolo: </span>{title ? title : name}</p>
