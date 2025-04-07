@@ -3,15 +3,15 @@ import { GlobalProvider, useGlobal } from './GlobalProvider'
 import MovieCard from './MovieCard'
 
 
-const PopularList = () => {
-    const { populars, setPopulars } = useGlobal()
-    console.log(populars);
+const TopRatedList = () => {
+    const { topRated } = useGlobal()
+    console.log(topRated);
 
     return (
         <>
-            <h2 className=' mt-12 ml-4 mb-4 text-2xl text-white'>I Film più popolari</h2>
+            <h2 className=' mt-12 ml-4 mb-4 text-2xl text-white'>I Film più votati dalla Crtica</h2>
             <div className='flex px-2 gap-4 overflow-x-auto scrollbar-hide snap-x snap-mandatory '>
-                {populars.results?.map(element => (
+                {topRated.results?.map(element => (
                     <div key={element.id} className=' flex-none w-[270px]  last:mr-0'>
 
                         <MovieCard
@@ -35,4 +35,4 @@ const PopularList = () => {
     )
 }
 
-export default PopularList
+export default TopRatedList

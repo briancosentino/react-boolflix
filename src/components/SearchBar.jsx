@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useGlobal } from './GlobalProvider'
 
 const SearchBar = () => {
-    const { query, setQuery } = useGlobal()
+    const { query, setQuery, setTrending, setPopulars, setTopRated } = useGlobal()
     console.log(query);
 
 
@@ -18,6 +18,7 @@ const SearchBar = () => {
         e.preventDefault()
         setQuery(searched)
         setSearched('')
+
 
 
 
